@@ -36,12 +36,16 @@ Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 " Plugin for code formatting
 Plug 'Chiel92/vim-autoformat'
 
+" Plugin for surrounding quick change
+Plug 'tpope/vim-surround'
+
 " Plugin for tex
 Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
 let g:vimtex_view_method=''
 let g:vimtex_quickfix_mode=0
 
+Plug 'vim-pandoc/vim-pandoc' | Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
@@ -64,24 +68,26 @@ set showcmd
 
 " Markdown config
 set conceallevel=1
-let g:tex_conceal = "abdgm"
+let g:tex_conceal = 'abdgm'
 let g:vim_markdown_math = 1
 
 " Snippet config
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsExpandTrigger = '<tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<tab>'
-" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit='vertical'
 
+" Indentation Settings
+" :set tabstop=4 shiftwidth=4 expandtab
 
 " Select in dollar sign
 xnoremap i$ :<C-u>normal! T$vt$<CR>
+xnoremap a$ :<C-u>normal! T$hvt$l<CR>
 onoremap i$ :normal vi$<CR>
+onoremap a$ :normal va$<CR>
+
 
 " Show line number
 set number
