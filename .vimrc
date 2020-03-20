@@ -66,6 +66,9 @@ set background=dark
 " Show command
 set showcmd
 
+" Indent using spaces
+set expandtab ts=4 sw=4
+
 " Markdown config
 set conceallevel=1
 let g:tex_conceal = 'abdgm'

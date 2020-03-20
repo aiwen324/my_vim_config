@@ -53,24 +53,49 @@ snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
 endsnippet
 
-context 'math()'
+context "math()"
 snippet '([A-Za-z])sub' "subscript3" wrA
 `!p snip.rv = match.group(1)`_{$1}$0
 endsnippet
 
-context 'math()'
+context "math()"
 snippet infinity "Infinity" wA
 \infty$0
 endsnippet
 
-context 'math()'
-snippet -> "rightarrow" iA
+context "math()"
+snippet '(\\)?alpha' "alpha" wrA
+\alpha
+endsnippet
+
+context "math()"
+snippet '(\\)?beta' "beta" wrA
+\beta
+endsnippet
+
+context "math()"
+snippet '(\\)?theta' "theta" wrA
+\theta
+endsnippet
+
+context "math()"
+snippet '(\\)?pi' "pi" wrA
+\pi
+endsnippet
+
+context "math()"
+snippet -> "rightarrow" wA
 \rightarrow 
 endsnippet
 
-context 'math()'
-snippet <- "leftarrow" iA
+context "math()"
+snippet <- "leftarrow" wA
 \leftarrow
+endsnippet
+
+context "math()"
+snippet hat "Hat" wA
+\hat{$1}$0
 endsnippet
 
 snippet sr "^2" iA
@@ -85,43 +110,54 @@ snippet td "superscript" iA
 ^{$1}$0
 endsnippet
 
+priority 10
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-snippet / "Fraction" iA
+
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet / "Fraction" i
 \\frac{${VISUAL}}{$1}$0
 endsnippet
 
-context 'math()'
+context "math()"
 snippet dint "integral" wA
 \int_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
 endsnippet
 
-context 'math()'
+context "math()"
 snippet vint "integral" wA
 \int_{${1}} ${2:${VISUAL}} $0
 endsnippet
 
 
-context 'math()'
+context "math()"
 snippet iint "integral" wA
 \int ${1:${VISUAL}} $0
 endsnippet
 
-context 'math()'
+context "math()"
 snippet lim "Limit" w
 \lim_{${1:n\rightarrow \infty}} ${2:${VISUAL}} $0
 endsnippet
 
-context 'math()'
+context "math()"
 snippet limsup "limsup" wA
 \limsup_{${1:n} \to ${2:\infty}} 
 endsnippet
 
-context 'math()'
+context "math()"
 snippet liminf "liminf" wA
 \liminf_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+context "math()"
+snippet distas "Distributed as" wA
+\overset{$1}{\sim}$0
 endsnippet
 
 priority 300
