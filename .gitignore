@@ -4,7 +4,8 @@
 # But not these files...
 !*.vimrc
 !*.vim
-# !*.bashrc
+!.vim/UltiSnips
+!.vim/UltiSnips**
 !.gitignore
 !.inputrc
 
