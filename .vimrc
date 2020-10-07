@@ -17,6 +17,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Nerdtree config for auto open
+autocmd vimenter * NERDTree
 
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
