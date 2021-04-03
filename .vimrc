@@ -47,7 +47,7 @@ Plug 'tpope/vim-surround'
 " Plugin for tex
 Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
-let g:vimtex_view_method=''
+let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 
 " Plug 'vim-pandoc/vim-pandoc' | Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -67,7 +67,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Fix blue text issue
 set background=dark
-
+colorscheme desert
 " Show command
 set showcmd
 
@@ -78,6 +78,9 @@ set expandtab ts=4 sw=4 sts=4
 set conceallevel=1
 let g:tex_conceal = 'abdgm'
 let g:vim_markdown_math = 1
+
+" Set highlight
+set hlsearch
 
 " Snippet config
 " Trigger configuration. Do not use <tab> if you use
@@ -197,5 +200,9 @@ let g:mkdp_page_title = '「${name}」'
 nmap <C-s> <Plug>(MarkdownPreview)
 nmap <M-s> <Plug>(MarkdownPreviewStop)
 nmap <C-p> <Plug>(MarkdownPreviewToggle)
+
+" fix indent issue in markdown
+au filetype markdown set formatoptions+=ro
+au filetype markdown set comments=b:*,b:-,b:+,b:1.,n:>
 
 " =========================================================================================================
