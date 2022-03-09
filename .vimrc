@@ -31,6 +31,7 @@ autocmd vimenter * NERDTree
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Markdown Plugin
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
@@ -72,7 +73,7 @@ colorscheme desert
 set showcmd
 
 " Indent using spaces
-set expandtab ts=4 sw=4 sts=4
+set expandtab ts=2 sw=2 sts=2
 
 " Markdown config
 set conceallevel=1
