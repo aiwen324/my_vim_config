@@ -12,3 +12,8 @@ alias vim='PYTHONPATH="" vim' # Fix for bad Python Path
 alias steam="LD_PRELOAD=\"/usr/lib/libgio-2.0.so.0 /usr/lib/libglib-2.0.so.0\" steam"
 alias steam_update="LD_PRELOAD=\"\" steam"
 ```
+
+## Kill process by grep
+```
+ps -ef |grep <process keywords> | grep yai |grep -v grep |awk '{print $2}' | xargs -r kill -9
+```
