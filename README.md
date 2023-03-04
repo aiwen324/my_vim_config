@@ -17,3 +17,8 @@ alias steam_update="LD_PRELOAD=\"\" steam"
 ```
 ps -ef |grep <process keywords> | grep yai |grep -v grep |awk '{print $2}' | xargs -r kill -9
 ```
+
+## Combine pdf
+```
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=<output_pdf> <pdf_1> <pdf_2> ...
+```
