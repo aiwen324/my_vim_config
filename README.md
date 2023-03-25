@@ -22,3 +22,10 @@ ps -ef |grep <process keywords> | grep yai |grep -v grep |awk '{print $2}' | xar
 ```
 gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=<output_pdf> <pdf_1> <pdf_2> ...
 ```
+
+## Powershell X-forwarding
+**Notice**: You still need an X-server to use this feature. So it's better to just use WSL2
+```powershell
+$env:DISPLAY = "localhost:0.0“
+echo $env:DISPLAY
+```
