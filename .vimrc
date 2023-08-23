@@ -107,6 +107,20 @@ set number
 " Toggle paste mode
 set pastetoggle=<F2>
 
+" Visual select search, <leader> is '\' on the keyboard
+" return a representation of the selected text
+" suitable for use as a search pattern
+function GetVisualSelection()
+  let old_reg = @a
+  normal! gv"ay
+  let raw_search = @a
+  let @a = old_reg
+  return substitute(escape(raw_search, '\/.*$^~[]'), "\n", '\\n', "g")
+endfunction
+
+xnoremap <leader>r :<C-u>%s/<C-r>=GetVisualSelection()<CR>/
+
+
 " ============================================================================================
 " Config fore Markdown Previewer
 " set to 1, nvim will open the preview window after entering the markdown buffer
