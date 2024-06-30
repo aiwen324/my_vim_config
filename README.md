@@ -21,6 +21,10 @@ ps -ef |grep <process keywords> | grep yai |grep -v grep |awk '{print $2}' | xar
 ## Combine pdf
 ```
 gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=<output_pdf> <pdf_1> <pdf_2> ...
+# Change PDFSETTINGS for smaller size
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
+   -dQUIET -dDetectDuplicateImages \
+   -dCompressFonts=true -o <output_pdf> <pdf_1> <pdf_2> ...
 ```
 
 ## Powershell X-forwarding
