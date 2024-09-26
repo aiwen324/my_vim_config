@@ -33,3 +33,8 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
 $env:DISPLAY = "localhost:0.0“
 echo $env:DISPLAY
 ```
+
+## Arch Linux Update Signature Issue
+```bash
+sudo pacman -Sy archlinux-keyring && pacman -Syu
+```
