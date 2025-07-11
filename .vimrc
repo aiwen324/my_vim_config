@@ -37,7 +37,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 
 " Markdown Preview Plugin
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Plugin for code formatting
 Plug 'Chiel92/vim-autoformat'
@@ -45,16 +45,23 @@ Plug 'Chiel92/vim-autoformat'
 " Plugin for surrounding quick change
 Plug 'tpope/vim-surround'
 
+" Plugin YCM
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer' }
+let g:ycm_always_populate_location_list = 1
+
 " Plugin for tex
-Plug 'lervag/vimtex'
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
+" Plug 'lervag/vimtex'
+" let g:tex_flavor='latex'
+" let g:vimtex_view_method='zathura'
+" let g:vimtex_quickfix_mode=0
 
 " Plug 'vim-pandoc/vim-pandoc' | Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
+
+" Plugin vim multi selection
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Initialize plugin system
 call plug#end()
@@ -76,9 +83,9 @@ set showcmd
 set expandtab ts=2 sw=2 sts=2
 
 " Markdown config
-set conceallevel=1
-let g:tex_conceal = 'abdgm'
-let g:vim_markdown_math = 1
+" set conceallevel=1
+" let g:tex_conceal = 'abdgm'
+" let g:vim_markdown_math = 1
 
 " Set highlight
 set hlsearch
@@ -87,9 +94,9 @@ set hlsearch
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit='vertical'
+" let g:UltiSnipsJumpForwardTrigger='<tab>'
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsEditSplit='vertical'
 
 " Indentation Settings
 " :set tabstop=4 shiftwidth=4 expandtab
