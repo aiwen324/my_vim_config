@@ -12,13 +12,13 @@ Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Nerdtree config for auto open
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -37,7 +37,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 
 " Markdown Preview Plugin
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
 
 " Plugin for code formatting
 Plug 'Chiel92/vim-autoformat'
@@ -45,9 +45,27 @@ Plug 'Chiel92/vim-autoformat'
 " Plugin for surrounding quick change
 Plug 'tpope/vim-surround'
 
+" Plugin vim multi selection
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 " Plugin YCM
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer' }
-let g:ycm_always_populate_location_list = 1
+" NOTE: This plugin is heavy, only install it if you really need it
+" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer' }
+" let g:ycm_always_populate_location_list = 1
+
+" Plugin for linediff (block diff)
+Plug 'AndrewRadev/linediff.vim'
+
+" Plugin for heuristic indent
+Plug 'tpope/vim-sleuth'
+
+" Plugin for faster scrolling
+Plug 'Houl/repmo-vim'
+
+" Plugin for checkhealth
+" if !has('nvim')
+"     Plug 'rhysd/vim-healthcheck'
+" endif
 
 " Plugin for tex
 " Plug 'lervag/vimtex'
@@ -59,9 +77,6 @@ let g:ycm_always_populate_location_list = 1
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
-
-" Plugin vim multi selection
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Initialize plugin system
 call plug#end()
@@ -83,9 +98,9 @@ set showcmd
 set expandtab ts=2 sw=2 sts=2
 
 " Markdown config
-" set conceallevel=1
-" let g:tex_conceal = 'abdgm'
-" let g:vim_markdown_math = 1
+set conceallevel=1
+let g:tex_conceal = 'abdgm'
+let g:vim_markdown_math = 1
 
 " Set highlight
 set hlsearch
@@ -98,8 +113,7 @@ set hlsearch
 " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsEditSplit='vertical'
 
-" Indentation Settings
-" :set tabstop=4 shiftwidth=4 expandtab
+
 
 " Select in dollar sign
 xnoremap i$ :<C-u>normal! T$vt$<CR>
@@ -114,6 +128,7 @@ set number
 " Toggle paste mode
 set pastetoggle=<F2>
 
+" [Custom]
 " Visual select search, <leader> is '\' on the keyboard
 " return a representation of the selected text
 " suitable for use as a search pattern
@@ -126,9 +141,119 @@ function GetVisualSelection()
 endfunction
 
 xnoremap <leader>r :<C-u>%s/<C-r>=GetVisualSelection()<CR>/
+xnoremap <leader>t :/<C-r>=GetVisualSelection()<CR>
+
+
+" Change auto complete behavior
+set wildmode=list:longest 
+
+" NOTE: I don't know why I had this but I've commented following when I am
+" syncing this change.
+" Change modifyOtherCase to avoid >4;2m weird chars
+" let &t_TI = ""
+" let &t_TE = ""
+" set keyprotocol=
+" let &term=&term
+
+" Disable autoselect
+set clipboard-=autoselect
+set guioptions-=a
+
+" Show as much as possible text for wrapped line
+set display+=lastline
+
+" Show cursor line and cursor column (For better navigation)
+set cursorline
+set cursorcolumn
+
+" [Custom]
+" Scripts for line wrapping and corresponding config 
+" NOTE: I found this is generally useful
+" Move screen lines when text wrapped
+" noremap <silent> <Leader>w :call ToggleWrap()<CR>
+" function ToggleWrap()
+"   if &wrap
+"     echo "Wrap OFF"
+"     setlocal nowrap
+"     set virtualedit=all
+"     silent! nunmap <buffer> <Up>
+"     silent! nunmap <buffer> <Down>
+"     silent! nunmap <buffer> <Home>
+"     silent! nunmap <buffer> <End>
+"     silent! iunmap <buffer> <Up>
+"     silent! iunmap <buffer> <Down>
+"     silent! iunmap <buffer> <Home>
+"     silent! iunmap <buffer> <End>
+"   else
+"     echo "Wrap ON"
+"     setlocal wrap linebreak nolist
+"     set virtualedit=
+"     setlocal display+=lastline
+"     noremap  <buffer> <silent> <Up>   gk
+"     noremap  <buffer> <silent> <Down> gj
+"     noremap  <buffer> <silent> <Home> g<Home>
+"     noremap  <buffer> <silent> <End>  g<End>
+"     inoremap <buffer> <silent> <Up>   <C-o>gk
+"     inoremap <buffer> <silent> <Down> <C-o>gj
+"     inoremap <buffer> <silent> <Home> <C-o>g<Home>
+"     inoremap <buffer> <silent> <End>  <C-o>g<End>
+"   endif
+" endfunction
+" 
+" function CheckWrap()
+"   if &wrap
+"     set virtualedit=
+"     setlocal display+=lastline
+"     noremap  <buffer> <silent> <Up>   gk
+"     noremap  <buffer> <silent> <Down> gj
+"     noremap  <buffer> <silent> <Home> g<Home>
+"     noremap  <buffer> <silent> <End>  g<End>
+"     inoremap <buffer> <silent> <Up>   <C-o>gk
+"     inoremap <buffer> <silent> <Down> <C-o>gj
+"     inoremap <buffer> <silent> <Home> <C-o>g<Home>
+"     inoremap <buffer> <silent> <End>  <C-o>g<End> 
+"   else
+"     set virtualedit=all
+"     silent! nunmap <buffer> <Up>
+"     silent! nunmap <buffer> <Down>
+"     silent! nunmap <buffer> <Home>
+"     silent! nunmap <buffer> <End>
+"     silent! iunmap <buffer> <Up>
+"     silent! iunmap <buffer> <Down>
+"     silent! iunmap <buffer> <Home>
+"     silent! iunmap <buffer> <End> 
+"   endif
+" endfunction
+" " Map keys depends on wrapped state
+" :call CheckWrap()
+
+" Modify diff option
+set diffopt+=internal,algorithm:patience
+
+" [repmo-vim]
+" Faster scrolling key mapping
+" map a motion and its reverse motion:
+:noremap <expr> h repmo#SelfKey('h', 'l')|sunmap h
+:noremap <expr> l repmo#SelfKey('l', 'h')|sunmap l
+
+" if you like `:noremap j gj', you can keep that:
+:map <expr> j repmo#Key('gj', 'gk')|sunmap j
+:map <expr> k repmo#Key('gk', 'gj')|sunmap k
+
+" repeat the last [count]motion or the last zap-key:
+:map <expr> ; repmo#LastKey(';')|sunmap ;
+:map <expr> , repmo#LastRevKey(',')|sunmap ,
+
+" add these mappings when repeating with `;' or `,':
+:noremap <expr> f repmo#ZapKey('f')|sunmap f
+:noremap <expr> F repmo#ZapKey('F')|sunmap F
+:noremap <expr> t repmo#ZapKey('t')|sunmap t
+:noremap <expr> T repmo#ZapKey('T')|sunmap T
+" [repmo-vim]
 
 
 " ============================================================================================
+" [markdown-preview]
 " Config fore Markdown Previewer
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
@@ -226,5 +351,4 @@ nmap <C-p> <Plug>(MarkdownPreviewToggle)
 " fix indent issue in markdown
 au filetype markdown set formatoptions+=ro
 au filetype markdown set comments=b:*,b:-,b:+,b:1.,n:>
-
 " =========================================================================================================
