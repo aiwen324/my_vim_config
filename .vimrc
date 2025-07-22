@@ -40,7 +40,9 @@ Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 " Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
 
 " Plugin for code formatting
-Plug 'Chiel92/vim-autoformat'
+" NOTE: I didn't figure out exact way to turn off auto format, I didn't think
+" I truned it on
+" Plug 'Chiel92/vim-autoformat'
 
 " Plugin for surrounding quick change
 Plug 'tpope/vim-surround'
@@ -61,6 +63,11 @@ Plug 'tpope/vim-sleuth'
 
 " Plugin for faster scrolling
 Plug 'Houl/repmo-vim'
+
+" Plugin for indent line guide
+" NOTE: This plugin will cause some visual problem in markdown file if you
+" change its default bg color
+Plug 'Yggdroot/indentLine'
 
 " Plugin for checkhealth
 " if !has('nvim')
@@ -112,8 +119,6 @@ set hlsearch
 " let g:UltiSnipsJumpForwardTrigger='<tab>'
 " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsEditSplit='vertical'
-
-
 
 " Select in dollar sign
 xnoremap i$ :<C-u>normal! T$vt$<CR>
