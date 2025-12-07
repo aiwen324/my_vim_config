@@ -30,14 +30,15 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Following will install fzf, user can decide if he wants to manually install
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Markdown Plugin
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 
 " Markdown Preview Plugin
-" Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Plugin for code formatting
 " NOTE: I didn't figure out exact way to turn off auto format, I didn't think
@@ -155,9 +156,20 @@ endfunction
 xnoremap <leader>r :<C-u>%s/<C-r>=GetVisualSelection()<CR>/
 xnoremap <leader>t :/<C-r>=GetVisualSelection()<CR>
 
+" Enable filetype detection and syntax detection on Macos.
+" I don't know why it was not turned on by default
+"–– Enable syntax highlighting ––
+syntax on
+
+"–– Enable filetype detection, plugins & indenting ––
+filetype plugin indent on
+
 
 " Change auto complete behavior
 set wildmode=list:longest 
+
+" Macos fzf path managed by brew
+set rtp+=/opt/homebrew/opt/fzf
 
 " NOTE: I don't know why I had this but I've commented following when I am
 " syncing this change.
@@ -166,6 +178,9 @@ set wildmode=list:longest
 " let &t_TE = ""
 " set keyprotocol=
 " let &term=&term
+
+" Set vim linewrap only break at special chars
+set linebreak
 
 " Disable autoselect
 set clipboard-=autoselect
@@ -240,6 +255,7 @@ set cursorcolumn
 " :call CheckWrap()
 
 " Modify diff option
+" For some vim it doesn't have this option
 set diffopt+=internal,algorithm:patience
 
 " [repmo-vim]
