@@ -98,6 +98,13 @@ nmap ga <Plug>(EasyAlign)
 " Fix blue text issue
 set background=dark
 colorscheme desert
+" Make cursor more visible in desert
+highlight MatchParen cterm=underline,bold ctermbg=none ctermfg=magenta
+" Fix Session.vim not taking MatchParen
+augroup DesertFix
+  autocmd!
+  autocmd ColorScheme desert highlight MatchParen cterm=underline,bold ctermbg=none ctermfg=magenta
+augroup END
 " Show command
 set showcmd
 
