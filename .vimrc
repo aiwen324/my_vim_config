@@ -156,21 +156,6 @@ endfunction
 xnoremap <leader>r :<C-u>%s/<C-r>=GetVisualSelection()<CR>/
 xnoremap <leader>t :/<C-r>=GetVisualSelection()<CR>
 
-" Enable filetype detection and syntax detection on Macos.
-" I don't know why it was not turned on by default
-"–– Enable syntax highlighting ––
-syntax on
-
-"–– Enable filetype detection, plugins & indenting ––
-filetype plugin indent on
-
-
-" Change auto complete behavior
-set wildmode=list:longest 
-
-" Macos fzf path managed by brew
-set rtp+=/opt/homebrew/opt/fzf
-
 " NOTE: I don't know why I had this but I've commented following when I am
 " syncing this change.
 " Change modifyOtherCase to avoid >4;2m weird chars
@@ -192,6 +177,22 @@ set display+=lastline
 " Show cursor line and cursor column (For better navigation)
 set cursorline
 set cursorcolumn
+
+" [MacOS]
+" Enable filetype detection and syntax detection on Macos.
+" I don't know why it was not turned on by default
+"–– Enable syntax highlighting ––
+syntax on
+
+"–– Enable filetype detection, plugins & indenting ––
+filetype plugin indent on
+
+
+" Change auto complete behavior
+set wildmode=list:longest 
+
+" Macos fzf path managed by brew
+set rtp+=/opt/homebrew/opt/fzf
 
 " [Custom]
 " Scripts for line wrapping and corresponding config 
@@ -277,7 +278,6 @@ set diffopt+=internal,algorithm:patience
 :noremap <expr> F repmo#ZapKey('F')|sunmap F
 :noremap <expr> t repmo#ZapKey('t')|sunmap t
 :noremap <expr> T repmo#ZapKey('T')|sunmap T
-" [repmo-vim]
 
 
 " ============================================================================================
