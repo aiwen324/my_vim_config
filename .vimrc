@@ -178,6 +178,15 @@ set display+=lastline
 set cursorline
 set cursorcolumn
 
+" [Linux Server (Maybe)]
+" Fallback for terminals that don't support <C-Left>
+noremap <Esc>[1;5D <C-Left>
+inoremap <Esc>[1;5D <C-Left>
+cnoremap <Esc>[1;5D <C-Left>
+noremap <Esc>[1;5C <C-Right>
+inoremap <Esc>[1;5C <C-Right>
+cnoremap <Esc>[1;5C <C-Right>
+
 " [MacOS]
 " Enable filetype detection and syntax detection on Macos.
 " I don't know why it was not turned on by default
