@@ -6,6 +6,8 @@
 ```bash
 alias vim='PYTHONPATH="" vim' # Fix for bad Python Path
 ```
+## GRUB Related
+To make sure grub can be loaded, we can add a fallback solution if Windows keep modifying boot entry, copy `grubx64.efi` to `EFI/BOOT/BOOTX64.EFI` under `/boot/efi`
 
 ## Steam LD config in China with proxy
 ```bash
